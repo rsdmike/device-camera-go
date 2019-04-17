@@ -2,7 +2,7 @@
 
 PKGS := $(shell go list ./... | grep -v /vendor)
 
-GO=CGO_ENABLED=0 go
+GO=CGO_ENABLED=0 GO111MODULE=on go
 GOFLAGS=-ldflags
 
 BIN_DIR := $(GOPATH)/bin
@@ -28,7 +28,7 @@ clean:
 	rm -f $(MICROSERVICES)
 
 prepare:
-	dep init
+	go mod init
 
 update:
-	dep ensure -update
+	go mod tidy
