@@ -330,1648 +330,1644 @@ These responses reveal names, associated device profile, commands and other meta
 
 Example Response:
 ```json
-> [
->  {
->      "created": 1548827546764,
->      "modified": 1548827546764,
->      "origin": 1548827546759,
->      "description": "",
->      "id": "5c513b9a9f8fc20001a711aa",
->      "name": "edgex-camera-onvif-ACCC8E8439F0",
->      "adminState": "UNLOCKED",
->      "operatingState": "ENABLED",
->      "addressable": {
->          "created": 1548827546759,
->          "modified": 0,
->          "origin": 1548827546758,
->          "id": "5c513b9a9f8fc20001a711a9",
->          "name": "edgex-camera-onvif-ACCC8E8439F0",
->          "protocol": "HTTP",
->          "method": null,
->          "address": "172.17.0.1",
->          "port": 49990,
->          "path": "/cameradiscoveryprovider",
->          "publisher": "none",
->          "user": "none",
->          "password": "none",
->          "topic": "none",
->          "baseURL": "HTTP://172.17.0.1:49990",
->          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
->      },
->      "lastConnected": 0,
->      "lastReported": 0,
->      "labels": [
->          "newtag:sometag",
->          "store:true",
->          "friendly_name:Black Axis",
->          "location:North Wall"
->      ],
->      "location": null,
->      "service": {
->          "created": 1548827534696,
->          "modified": 1548827534696,
->          "origin": 1548827534695,
->          "description": "",
->          "id": "5c513b8e9f8fc20001a7119c",
->          "name": "device-camera-go",
->          "lastConnected": 0,
->          "lastReported": 0,
->          "operatingState": "ENABLED",
->          "labels": [],
->          "addressable": {
->              "created": 1548827534692,
->              "modified": 0,
->              "origin": 1548827534689,
->              "id": "5c513b8e9f8fc20001a7119b",
->              "name": "device-camera-go",
->              "protocol": "HTTP",
->              "method": "POST",
->              "address": "172.17.0.1",
->              "port": 49990,
->              "path": "/api/v1/callback",
->              "publisher": null,
->              "user": null,
->              "password": null,
->              "topic": null,
->              "baseURL": "HTTP://172.17.0.1:49990",
->              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
->          },
->          "adminState": "UNLOCKED"
->      },
->      "profile": {
->          "created": 1548827534765,
->          "modified": 1548827534765,
->          "origin": 0,
->          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
->          "id": "5c513b8e9f8fc20001a711a2",
->          "name": "camera-profile-onvif",
->          "manufacturer": "www.onvif.org",
->          "model": "EdgeX_CameraDevice",
->          "labels": [
->              "camera-onvif"
->          ],
->          "objects": null,
->          "deviceResources": [
->              {
->                  "description": "command error response",
->                  "name": "cam_error",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "An Error Occurred",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "CamErrorString"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device tags",
->                  "name": "tags",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "Tags"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device standards-based metadata",
->                  "name": "onvif_profiles",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "ONVIFProfiles"
->                      }
->                  },
->                  "attributes": null
->              }
->          ],
->          "resources": [
->              {
->                  "name": "cam_error",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "onvif_profiles",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              }
->          ],
->          "commands": [
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a0",
->                  "name": "tags",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get Tags",
->                              "expectedValues": [
->                                  "cameradevice_tags"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set Tags",
->                              "expectedValues": [
->                                  "cameradevice_id"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "cameradevice_tags"
->                      ]
->                  }
->              },
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a1",
->                  "name": "onvif_profiles",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "onvif_camera_metadata"
->                      ]
->                  }
->              }
->          ]
->      }
->  },
->  {
->      "created": 1548827546836,
->      "modified": 1548827546836,
->      "origin": 1548827546803,
->      "description": "",
->      "id": "5c513b9a9f8fc20001a711ac",
->      "name": "edgex-camera-onvif-ACCC8E8621BB",
->      "adminState": "UNLOCKED",
->      "operatingState": "ENABLED",
->      "addressable": {
->          "created": 1548827546803,
->          "modified": 0,
->          "origin": 1548827546802,
->          "id": "5c513b9a9f8fc20001a711ab",
->          "name": "edgex-camera-onvif-ACCC8E8621BB",
->          "protocol": "HTTP",
->          "method": null,
->          "address": "172.17.0.1",
->          "port": 49990,
->          "path": "/cameradiscoveryprovider",
->          "publisher": "none",
->          "user": "none",
->          "password": "none",
->          "topic": "none",
->          "baseURL": "HTTP://172.17.0.1:49990",
->          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
->      },
->      "lastConnected": 0,
->      "lastReported": 0,
->      "labels": [
->          "friendly_name:Black Axis3",
->          "location:Ceiling",
->          "newtag:sometag3",
->          "store:false"
->      ],
->      "location": null,
->      "service": {
->          "created": 1548827534696,
->          "modified": 1548827534696,
->          "origin": 1548827534695,
->          "description": "",
->          "id": "5c513b8e9f8fc20001a7119c",
->          "name": "device-camera-go",
->          "lastConnected": 0,
->          "lastReported": 0,
->          "operatingState": "ENABLED",
->          "labels": [],
->          "addressable": {
->              "created": 1548827534692,
->              "modified": 0,
->              "origin": 1548827534689,
->              "id": "5c513b8e9f8fc20001a7119b",
->              "name": "device-camera-go",
->              "protocol": "HTTP",
->              "method": "POST",
->              "address": "172.17.0.1",
->              "port": 49990,
->              "path": "/api/v1/callback",
->              "publisher": null,
->              "user": null,
->              "password": null,
->              "topic": null,
->              "baseURL": "HTTP://172.17.0.1:49990",
->              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
->          },
->          "adminState": "UNLOCKED"
->      },
->      "profile": {
->          "created": 1548827534765,
->          "modified": 1548827534765,
->          "origin": 0,
->          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
->          "id": "5c513b8e9f8fc20001a711a2",
->          "name": "camera-profile-onvif",
->          "manufacturer": "www.onvif.org",
->          "model": "EdgeX_CameraDevice",
->          "labels": [
->              "camera-onvif"
->          ],
->          "objects": null,
->          "deviceResources": [
->              {
->                  "description": "command error response",
->                  "name": "cam_error",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "An Error Occurred",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "CamErrorString"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device tags",
->                  "name": "tags",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "Tags"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device standards-based metadata",
->                  "name": "onvif_profiles",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "ONVIFProfiles"
->                      }
->                  },
->                  "attributes": null
->              }
->          ],
->          "resources": [
->              {
->                  "name": "cam_error",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "onvif_profiles",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              }
->          ],
->          "commands": [
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a0",
->                  "name": "tags",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get Tags",
->                              "expectedValues": [
->                                  "cameradevice_tags"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set Tags",
->                              "expectedValues": [
->                                  "cameradevice_id"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "cameradevice_tags"
->                      ]
->                  }
->              },
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a1",
->                  "name": "onvif_profiles",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "onvif_camera_metadata"
->                      ]
->                  }
->              }
->          ]
->      }
->  },
->  {
->      "created": 1548827546856,
->      "modified": 1548827546856,
->      "origin": 1548827546849,
->      "description": "",
->      "id": "5c513b9a9f8fc20001a711ae",
->      "name": "edgex-camera-onvif-DS-2CD2342WD-I20160817BBWR634390011",
->      "adminState": "UNLOCKED",
->      "operatingState": "ENABLED",
->      "addressable": {
->          "created": 1548827546848,
->          "modified": 0,
->          "origin": 1548827546842,
->          "id": "5c513b9a9f8fc20001a711ad",
->          "name": "edgex-camera-onvif-DS-2CD2342WD-I20160817BBWR634390011",
->          "protocol": "HTTP",
->          "method": null,
->          "address": "172.17.0.1",
->          "port": 49990,
->          "path": "/cameradiscoveryprovider",
->          "publisher": "none",
->          "user": "none",
->          "password": "none",
->          "topic": "none",
->          "baseURL": "HTTP://172.17.0.1:49990",
->          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
->      },
->      "lastConnected": 0,
->      "lastReported": 0,
->      "labels": [
->          "newtag:sometag4",
->          "store:true",
->          "friendly_name:White HikVision",
->          "location:Wall3"
->      ],
->      "location": null,
->      "service": {
->          "created": 1548827534696,
->          "modified": 1548827534696,
->          "origin": 1548827534695,
->          "description": "",
->          "id": "5c513b8e9f8fc20001a7119c",
->          "name": "device-camera-go",
->          "lastConnected": 0,
->          "lastReported": 0,
->          "operatingState": "ENABLED",
->          "labels": [],
->          "addressable": {
->              "created": 1548827534692,
->              "modified": 0,
->              "origin": 1548827534689,
->              "id": "5c513b8e9f8fc20001a7119b",
->              "name": "device-camera-go",
->              "protocol": "HTTP",
->              "method": "POST",
->              "address": "172.17.0.1",
->              "port": 49990,
->              "path": "/api/v1/callback",
->              "publisher": null,
->              "user": null,
->              "password": null,
->              "topic": null,
->              "baseURL": "HTTP://172.17.0.1:49990",
->              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
->          },
->          "adminState": "UNLOCKED"
->      },
->      "profile": {
->          "created": 1548827534765,
->          "modified": 1548827534765,
->          "origin": 0,
->          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
->          "id": "5c513b8e9f8fc20001a711a2",
->          "name": "camera-profile-onvif",
->          "manufacturer": "www.onvif.org",
->          "model": "EdgeX_CameraDevice",
->          "labels": [
->              "camera-onvif"
->          ],
->          "objects": null,
->          "deviceResources": [
->              {
->                  "description": "command error response",
->                  "name": "cam_error",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "An Error Occurred",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "CamErrorString"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device tags",
->                  "name": "tags",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "Tags"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device standards-based metadata",
->                  "name": "onvif_profiles",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "ONVIFProfiles"
->                      }
->                  },
->                  "attributes": null
->              }
->          ],
->          "resources": [
->              {
->                  "name": "cam_error",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "onvif_profiles",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              }
->          ],
->          "commands": [
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a0",
->                  "name": "tags",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get Tags",
->                              "expectedValues": [
->                                  "cameradevice_tags"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set Tags",
->                              "expectedValues": [
->                                  "cameradevice_id"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "cameradevice_tags"
->                      ]
->                  }
->              },
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a1",
->                  "name": "onvif_profiles",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "onvif_camera_metadata"
->                      ]
->                  }
->              }
->          ]
->      }
->  },
->  {
->      "created": 1548827546871,
->      "modified": 1548827546871,
->      "origin": 1548827546863,
->      "description": "",
->      "id": "5c513b9a9f8fc20001a711b0",
->      "name": "edgex-camera-onvif-ACCC8E843A18",
->      "adminState": "UNLOCKED",
->      "operatingState": "ENABLED",
->      "addressable": {
->          "created": 1548827546862,
->          "modified": 0,
->          "origin": 1548827546860,
->          "id": "5c513b9a9f8fc20001a711af",
->          "name": "edgex-camera-onvif-ACCC8E843A18",
->          "protocol": "HTTP",
->          "method": null,
->          "address": "172.17.0.1",
->          "port": 49990,
->          "path": "/cameradiscoveryprovider",
->          "publisher": "none",
->          "user": "none",
->          "password": "none",
->          "topic": "none",
->          "baseURL": "HTTP://172.17.0.1:49990",
->          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
->      },
->      "lastConnected": 0,
->      "lastReported": 0,
->      "labels": [
->          "newtag:sometag2",
->          "store:true",
->          "friendly_name:Black Axis2",
->          "location:North Wall2"
->      ],
->      "location": null,
->      "service": {
->          "created": 1548827534696,
->          "modified": 1548827534696,
->          "origin": 1548827534695,
->          "description": "",
->          "id": "5c513b8e9f8fc20001a7119c",
->          "name": "device-camera-go",
->          "lastConnected": 0,
->          "lastReported": 0,
->          "operatingState": "ENABLED",
->          "labels": [],
->          "addressable": {
->              "created": 1548827534692,
->              "modified": 0,
->              "origin": 1548827534689,
->              "id": "5c513b8e9f8fc20001a7119b",
->              "name": "device-camera-go",
->              "protocol": "HTTP",
->              "method": "POST",
->              "address": "172.17.0.1",
->              "port": 49990,
->              "path": "/api/v1/callback",
->              "publisher": null,
->              "user": null,
->              "password": null,
->              "topic": null,
->              "baseURL": "HTTP://172.17.0.1:49990",
->              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
->          },
->          "adminState": "UNLOCKED"
->      },
->      "profile": {
->          "created": 1548827534765,
->          "modified": 1548827534765,
->          "origin": 0,
->          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
->          "id": "5c513b8e9f8fc20001a711a2",
->          "name": "camera-profile-onvif",
->          "manufacturer": "www.onvif.org",
->          "model": "EdgeX_CameraDevice",
->          "labels": [
->              "camera-onvif"
->          ],
->          "objects": null,
->          "deviceResources": [
->              {
->                  "description": "command error response",
->                  "name": "cam_error",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "An Error Occurred",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "CamErrorString"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device tags",
->                  "name": "tags",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "Tags"
->                      }
->                  },
->                  "attributes": null
->              },
->              {
->                  "description": "camera device standards-based metadata",
->                  "name": "onvif_profiles",
->                  "tag": null,
->                  "properties": {
->                      "value": {
->                          "type": "String",
->                          "readWrite": "RW",
->                          "minimum": null,
->                          "maximum": null,
->                          "defaultValue": "key:value,key:value",
->                          "size": null,
->                          "word": "2",
->                          "lsb": null,
->                          "mask": "0x00",
->                          "shift": "0",
->                          "scale": "1.0",
->                          "offset": "0.0",
->                          "base": "0",
->                          "assertion": null,
->                          "signed": true,
->                          "precision": null
->                      },
->                      "units": {
->                          "type": "String",
->                          "readWrite": "R",
->                          "defaultValue": "ONVIFProfiles"
->                      }
->                  },
->                  "attributes": null
->              }
->          ],
->          "resources": [
->              {
->                  "name": "cam_error",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "cam_error",
->                          "property": "value",
->                          "parameter": "cameradevice_error",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "tags",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "tags",
->                          "property": "value",
->                          "parameter": "cameradevice_tags",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              },
->              {
->                  "name": "onvif_profiles",
->                  "get": [
->                      {
->                          "index": null,
->                          "operation": "get",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ],
->                  "set": [
->                      {
->                          "index": null,
->                          "operation": "set",
->                          "object": "onvif_profiles",
->                          "property": "value",
->                          "parameter": "onvif_camera_metadata",
->                          "resource": null,
->                          "secondary": [],
->                          "mappings": {}
->                      }
->                  ]
->              }
->          ],
->          "commands": [
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a0",
->                  "name": "tags",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get Tags",
->                              "expectedValues": [
->                                  "cameradevice_tags"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/tags",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set Tags",
->                              "expectedValues": [
->                                  "cameradevice_id"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set Tags Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "cameradevice_tags"
->                      ]
->                  }
->              },
->              {
->                  "created": 1548827534765,
->                  "modified": 0,
->                  "origin": 0,
->                  "id": "5c513b8e9f8fc20001a711a1",
->                  "name": "onvif_profiles",
->                  "get": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Get ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Get ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ]
->                  },
->                  "put": {
->                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
->                      "responses": [
->                          {
->                              "code": "200",
->                              "description": "Set ONVIF Profiles",
->                              "expectedValues": [
->                                  "onvif_camera_metadata"
->                              ]
->                          },
->                          {
->                              "code": "503",
->                              "description": "Set ONVIF Profiles Error",
->                              "expectedValues": [
->                                  "cameradevice_error"
->                              ]
->                          }
->                      ],
->                      "parameterNames": [
->                          "onvif_camera_metadata"
->                      ]
->                  }
->              }
->          ]
->      }
->  }
-> ]
-
-### ONVIF Metadata Cache Examples
-
-Example response from results that you can expect to find populates the locally cached **ONVIF metadata** ./res/camerainfo.json
-
-This serves as an in-memory and persisted repository to concurrently provide responses to commands such as **GET /api/v1/device/{deviceId}/onvif_profiles**
-
-> [{
-> 	"ip": "10.43.18.149:80",
-> 	"productname": "HIKVISION",
-> 	"firmwareversion": "V5.4.1 build 160525",
-> 	"serialnumber": "DS-2CD2342WD-I20160817BBWR634390011",
-> 	"profiles": [{
-> 		"ProfileName": "mainStream",
-> 		"Formats": "H264",
-> 		"Resolutions": ["1280", "720"],
-> 		"RTSPPath": "rtsp://10.43.18.149:554/Streaming/Channels/101?transportmode=unicast\u0026profile=Profile_1",
-> 		"ImagePath": "http://10.43.18.149/onvif-http/snapshot?Profile_1",
-> 		"ProfileToken": "Profile_1"
-> 	}, {
-> 		"ProfileName": "subStream",
-> 		"Formats": "H264",
-> 		"Resolutions": ["640", "360"],
-> 		"RTSPPath": "rtsp://10.43.18.149:554/Streaming/Channels/102?transportmode=unicast\u0026profile=Profile_2",
-> 		"ImagePath": "http://10.43.18.149/onvif-http/snapshot?Profile_2",
-> 		"ProfileToken": "Profile_2"
-> 	}],
-> 	"tags": {
-> 		"friendly_name": "White HikVision",
-> 		"location": "Wall3",
-> 		"newtag": "sometag4",
-> 		"store": true
-> 	}
-> }, {
-> 	"ip": "10.43.18.170:80",
-> 	"productname": "AXIS",
-> 	"firmwareversion": "7.15.2.1",
-> 	"serialnumber": "ACCC8E8621BB",
-> 	"profiles": [{
-> 		"ProfileName": "profile_0 h264",
-> 		"Formats": "H264",
-> 		"Resolutions": ["1920", "1920"],
-> 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?profile=profile_0_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?resolution=1920x1920\u0026compression=30",
-> 		"ProfileToken": "profile_0_h264"
-> 	}, {
-> 		"ProfileName": "profile_1 h264",
-> 		"Formats": "H264",
-> 		"Resolutions": ["1920", "1920"],
-> 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?profile=profile_1_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?resolution=1920x1920\u0026compression=30\u0026camera=2",
-> 		"ProfileToken": "profile_1_h264"
-> 	}, {
-> 		"ProfileName": "profile_0 jpeg",
-> 		"Formats": "JPEG",
-> 		"Resolutions": ["1920", "1920"],
-> 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?profile=profile_0_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?resolution=1920x1920\u0026compression=30",
-> 		"ProfileToken": "profile_0_jpeg"
-> 	}, {
-> 		"ProfileName": "profile_1 jpeg",
-> 		"Formats": "JPEG",
-> 		"Resolutions": ["1920", "1920"],
-> 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?profile=profile_1_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?resolution=1920x1920\u0026compression=30\u0026camera=2",
-> 		"ProfileToken": "profile_1_jpeg"
-> 	}],
-> 	"tags": {
-> 		"friendly_name": "Black Axis3",
-> 		"location": "Ceiling",
-> 		"newtag": "sometag3",
-> 		"store": false
-> 	}
-> }, {
-> 	"ip": "10.43.18.158:80",
-> 	"productname": "AXIS",
-> 	"firmwareversion": "6.15.6",
-> 	"serialnumber": "ACCC8E8439F0",
-> 	"profiles": [{
-> 		"ProfileName": "profile_1 h264",
-> 		"Formats": "H264",
-> 		"Resolutions": ["1920", "1080"],
-> 		"RTSPPath": "rtsp://10.43.18.158/onvif-media/media.amp?profile=profile_1_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.158/onvif-cgi/jpg/image.cgi?resolution=1920x1080\u0026compression=30",
-> 		"ProfileToken": "profile_1_h264"
-> 	}, {
-> 		"ProfileName": "profile_1 jpeg",
-> 		"Formats": "JPEG",
-> 		"Resolutions": ["1920", "1080"],
-> 		"RTSPPath": "rtsp://10.43.18.158/onvif-media/media.amp?profile=profile_1_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
-> 		"ImagePath": "http://10.43.18.158/onvif-cgi/jpg/image.cgi?resolution=1920x1080\u0026compression=30",
-> 		"ProfileToken": "profile_1_jpeg"
-> 	}],
-> 	"tags": {
-> 		"friendly_name": "Black Axis",
-> 		"location": "North Wall",
-> 		"newtag": "sometag",
-> 		"store": true
-> 	}
-> }, ... ]
+ [
+  {
+      "created": 1548827546764,
+      "modified": 1548827546764,
+      "origin": 1548827546759,
+      "description": "",
+      "id": "5c513b9a9f8fc20001a711aa",
+      "name": "edgex-camera-onvif-ACCC8E8439F0",
+      "adminState": "UNLOCKED",
+      "operatingState": "ENABLED",
+      "addressable": {
+          "created": 1548827546759,
+          "modified": 0,
+          "origin": 1548827546758,
+          "id": "5c513b9a9f8fc20001a711a9",
+          "name": "edgex-camera-onvif-ACCC8E8439F0",
+          "protocol": "HTTP",
+          "method": null,
+          "address": "172.17.0.1",
+          "port": 49990,
+          "path": "/cameradiscoveryprovider",
+          "publisher": "none",
+          "user": "none",
+          "password": "none",
+          "topic": "none",
+          "baseURL": "HTTP://172.17.0.1:49990",
+          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
+      },
+      "lastConnected": 0,
+      "lastReported": 0,
+      "labels": [
+          "newtag:sometag",
+          "store:true",
+          "friendly_name:Black Axis",
+          "location:North Wall"
+      ],
+      "location": null,
+      "service": {
+          "created": 1548827534696,
+          "modified": 1548827534696,
+          "origin": 1548827534695,
+          "description": "",
+          "id": "5c513b8e9f8fc20001a7119c",
+          "name": "device-camera-go",
+          "lastConnected": 0,
+          "lastReported": 0,
+          "operatingState": "ENABLED",
+          "labels": [],
+          "addressable": {
+              "created": 1548827534692,
+              "modified": 0,
+              "origin": 1548827534689,
+              "id": "5c513b8e9f8fc20001a7119b",
+              "name": "device-camera-go",
+              "protocol": "HTTP",
+              "method": "POST",
+              "address": "172.17.0.1",
+              "port": 49990,
+              "path": "/api/v1/callback",
+              "publisher": null,
+              "user": null,
+              "password": null,
+              "topic": null,
+              "baseURL": "HTTP://172.17.0.1:49990",
+              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
+          },
+          "adminState": "UNLOCKED"
+      },
+      "profile": {
+          "created": 1548827534765,
+          "modified": 1548827534765,
+          "origin": 0,
+          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
+          "id": "5c513b8e9f8fc20001a711a2",
+          "name": "camera-profile-onvif",
+          "manufacturer": "www.onvif.org",
+          "model": "EdgeX_CameraDevice",
+          "labels": [
+              "camera-onvif"
+          ],
+          "objects": null,
+          "deviceResources": [
+              {
+                  "description": "command error response",
+                  "name": "cam_error",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "An Error Occurred",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "CamErrorString"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device tags",
+                  "name": "tags",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "Tags"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device standards-based metadata",
+                  "name": "onvif_profiles",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "ONVIFProfiles"
+                      }
+                  },
+                  "attributes": null
+              }
+          ],
+          "resources": [
+              {
+                  "name": "cam_error",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "onvif_profiles",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              }
+          ],
+          "commands": [
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a0",
+                  "name": "tags",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get Tags",
+                              "expectedValues": [
+                                  "cameradevice_tags"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set Tags",
+                              "expectedValues": [
+                                  "cameradevice_id"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "cameradevice_tags"
+                      ]
+                  }
+              },
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a1",
+                  "name": "onvif_profiles",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "onvif_camera_metadata"
+                      ]
+                  }
+              }
+          ]
+      }
+  },
+  {
+      "created": 1548827546836,
+      "modified": 1548827546836,
+      "origin": 1548827546803,
+      "description": "",
+      "id": "5c513b9a9f8fc20001a711ac",
+      "name": "edgex-camera-onvif-ACCC8E8621BB",
+      "adminState": "UNLOCKED",
+      "operatingState": "ENABLED",
+      "addressable": {
+          "created": 1548827546803,
+          "modified": 0,
+          "origin": 1548827546802,
+          "id": "5c513b9a9f8fc20001a711ab",
+          "name": "edgex-camera-onvif-ACCC8E8621BB",
+          "protocol": "HTTP",
+          "method": null,
+          "address": "172.17.0.1",
+          "port": 49990,
+          "path": "/cameradiscoveryprovider",
+          "publisher": "none",
+          "user": "none",
+          "password": "none",
+          "topic": "none",
+          "baseURL": "HTTP://172.17.0.1:49990",
+          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
+      },
+      "lastConnected": 0,
+      "lastReported": 0,
+      "labels": [
+          "friendly_name:Black Axis3",
+          "location:Ceiling",
+          "newtag:sometag3",
+          "store:false"
+      ],
+      "location": null,
+      "service": {
+          "created": 1548827534696,
+          "modified": 1548827534696,
+          "origin": 1548827534695,
+          "description": "",
+          "id": "5c513b8e9f8fc20001a7119c",
+          "name": "device-camera-go",
+          "lastConnected": 0,
+          "lastReported": 0,
+          "operatingState": "ENABLED",
+          "labels": [],
+          "addressable": {
+              "created": 1548827534692,
+              "modified": 0,
+              "origin": 1548827534689,
+              "id": "5c513b8e9f8fc20001a7119b",
+              "name": "device-camera-go",
+              "protocol": "HTTP",
+              "method": "POST",
+              "address": "172.17.0.1",
+              "port": 49990,
+              "path": "/api/v1/callback",
+              "publisher": null,
+              "user": null,
+              "password": null,
+              "topic": null,
+              "baseURL": "HTTP://172.17.0.1:49990",
+              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
+          },
+          "adminState": "UNLOCKED"
+      },
+      "profile": {
+          "created": 1548827534765,
+          "modified": 1548827534765,
+          "origin": 0,
+          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
+          "id": "5c513b8e9f8fc20001a711a2",
+          "name": "camera-profile-onvif",
+          "manufacturer": "www.onvif.org",
+          "model": "EdgeX_CameraDevice",
+          "labels": [
+              "camera-onvif"
+          ],
+          "objects": null,
+          "deviceResources": [
+              {
+                  "description": "command error response",
+                  "name": "cam_error",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "An Error Occurred",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "CamErrorString"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device tags",
+                  "name": "tags",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "Tags"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device standards-based metadata",
+                  "name": "onvif_profiles",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "ONVIFProfiles"
+                      }
+                  },
+                  "attributes": null
+              }
+          ],
+          "resources": [
+              {
+                  "name": "cam_error",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "onvif_profiles",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              }
+          ],
+          "commands": [
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a0",
+                  "name": "tags",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get Tags",
+                              "expectedValues": [
+                                  "cameradevice_tags"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set Tags",
+                              "expectedValues": [
+                                  "cameradevice_id"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "cameradevice_tags"
+                      ]
+                  }
+              },
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a1",
+                  "name": "onvif_profiles",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "onvif_camera_metadata"
+                      ]
+                  }
+              }
+          ]
+      }
+  },
+  {
+      "created": 1548827546856,
+      "modified": 1548827546856,
+      "origin": 1548827546849,
+      "description": "",
+      "id": "5c513b9a9f8fc20001a711ae",
+      "name": "edgex-camera-onvif-DS-2CD2342WD-I20160817BBWR634390011",
+      "adminState": "UNLOCKED",
+      "operatingState": "ENABLED",
+      "addressable": {
+          "created": 1548827546848,
+          "modified": 0,
+          "origin": 1548827546842,
+          "id": "5c513b9a9f8fc20001a711ad",
+          "name": "edgex-camera-onvif-DS-2CD2342WD-I20160817BBWR634390011",
+          "protocol": "HTTP",
+          "method": null,
+          "address": "172.17.0.1",
+          "port": 49990,
+          "path": "/cameradiscoveryprovider",
+          "publisher": "none",
+          "user": "none",
+          "password": "none",
+          "topic": "none",
+          "baseURL": "HTTP://172.17.0.1:49990",
+          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
+      },
+      "lastConnected": 0,
+      "lastReported": 0,
+      "labels": [
+          "newtag:sometag4",
+          "store:true",
+          "friendly_name:White HikVision",
+          "location:Wall3"
+      ],
+      "location": null,
+      "service": {
+          "created": 1548827534696,
+          "modified": 1548827534696,
+          "origin": 1548827534695,
+          "description": "",
+          "id": "5c513b8e9f8fc20001a7119c",
+          "name": "device-camera-go",
+          "lastConnected": 0,
+          "lastReported": 0,
+          "operatingState": "ENABLED",
+          "labels": [],
+          "addressable": {
+              "created": 1548827534692,
+              "modified": 0,
+              "origin": 1548827534689,
+              "id": "5c513b8e9f8fc20001a7119b",
+              "name": "device-camera-go",
+              "protocol": "HTTP",
+              "method": "POST",
+              "address": "172.17.0.1",
+              "port": 49990,
+              "path": "/api/v1/callback",
+              "publisher": null,
+              "user": null,
+              "password": null,
+              "topic": null,
+              "baseURL": "HTTP://172.17.0.1:49990",
+              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
+          },
+          "adminState": "UNLOCKED"
+      },
+      "profile": {
+          "created": 1548827534765,
+          "modified": 1548827534765,
+          "origin": 0,
+          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
+          "id": "5c513b8e9f8fc20001a711a2",
+          "name": "camera-profile-onvif",
+          "manufacturer": "www.onvif.org",
+          "model": "EdgeX_CameraDevice",
+          "labels": [
+              "camera-onvif"
+          ],
+          "objects": null,
+          "deviceResources": [
+              {
+                  "description": "command error response",
+                  "name": "cam_error",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "An Error Occurred",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "CamErrorString"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device tags",
+                  "name": "tags",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "Tags"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device standards-based metadata",
+                  "name": "onvif_profiles",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "ONVIFProfiles"
+                      }
+                  },
+                  "attributes": null
+              }
+          ],
+          "resources": [
+              {
+                  "name": "cam_error",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "onvif_profiles",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              }
+          ],
+          "commands": [
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a0",
+                  "name": "tags",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get Tags",
+                              "expectedValues": [
+                                  "cameradevice_tags"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set Tags",
+                              "expectedValues": [
+                                  "cameradevice_id"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "cameradevice_tags"
+                      ]
+                  }
+              },
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a1",
+                  "name": "onvif_profiles",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "onvif_camera_metadata"
+                      ]
+                  }
+              }
+          ]
+      }
+  },
+  {
+      "created": 1548827546871,
+      "modified": 1548827546871,
+      "origin": 1548827546863,
+      "description": "",
+      "id": "5c513b9a9f8fc20001a711b0",
+      "name": "edgex-camera-onvif-ACCC8E843A18",
+      "adminState": "UNLOCKED",
+      "operatingState": "ENABLED",
+      "addressable": {
+          "created": 1548827546862,
+          "modified": 0,
+          "origin": 1548827546860,
+          "id": "5c513b9a9f8fc20001a711af",
+          "name": "edgex-camera-onvif-ACCC8E843A18",
+          "protocol": "HTTP",
+          "method": null,
+          "address": "172.17.0.1",
+          "port": 49990,
+          "path": "/cameradiscoveryprovider",
+          "publisher": "none",
+          "user": "none",
+          "password": "none",
+          "topic": "none",
+          "baseURL": "HTTP://172.17.0.1:49990",
+          "url": "HTTP://172.17.0.1:49990/cameradiscoveryprovider"
+      },
+      "lastConnected": 0,
+      "lastReported": 0,
+      "labels": [
+          "newtag:sometag2",
+          "store:true",
+          "friendly_name:Black Axis2",
+          "location:North Wall2"
+      ],
+      "location": null,
+      "service": {
+          "created": 1548827534696,
+          "modified": 1548827534696,
+          "origin": 1548827534695,
+          "description": "",
+          "id": "5c513b8e9f8fc20001a7119c",
+          "name": "device-camera-go",
+          "lastConnected": 0,
+          "lastReported": 0,
+          "operatingState": "ENABLED",
+          "labels": [],
+          "addressable": {
+              "created": 1548827534692,
+              "modified": 0,
+              "origin": 1548827534689,
+              "id": "5c513b8e9f8fc20001a7119b",
+              "name": "device-camera-go",
+              "protocol": "HTTP",
+              "method": "POST",
+              "address": "172.17.0.1",
+              "port": 49990,
+              "path": "/api/v1/callback",
+              "publisher": null,
+              "user": null,
+              "password": null,
+              "topic": null,
+              "baseURL": "HTTP://172.17.0.1:49990",
+              "url": "HTTP://172.17.0.1:49990/api/v1/callback"
+          },
+          "adminState": "UNLOCKED"
+      },
+      "profile": {
+          "created": 1548827534765,
+          "modified": 1548827534765,
+          "origin": 0,
+          "description": "EdgeX device profile for ONVIF supports conformant IP cameras.",
+          "id": "5c513b8e9f8fc20001a711a2",
+          "name": "camera-profile-onvif",
+          "manufacturer": "www.onvif.org",
+          "model": "EdgeX_CameraDevice",
+          "labels": [
+              "camera-onvif"
+          ],
+          "objects": null,
+          "deviceResources": [
+              {
+                  "description": "command error response",
+                  "name": "cam_error",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "An Error Occurred",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "CamErrorString"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device tags",
+                  "name": "tags",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "Tags"
+                      }
+                  },
+                  "attributes": null
+              },
+              {
+                  "description": "camera device standards-based metadata",
+                  "name": "onvif_profiles",
+                  "tag": null,
+                  "properties": {
+                      "value": {
+                          "type": "String",
+                          "readWrite": "RW",
+                          "minimum": null,
+                          "maximum": null,
+                          "defaultValue": "key:value,key:value",
+                          "size": null,
+                          "word": "2",
+                          "lsb": null,
+                          "mask": "0x00",
+                          "shift": "0",
+                          "scale": "1.0",
+                          "offset": "0.0",
+                          "base": "0",
+                          "assertion": null,
+                          "signed": true,
+                          "precision": null
+                      },
+                      "units": {
+                          "type": "String",
+                          "readWrite": "R",
+                          "defaultValue": "ONVIFProfiles"
+                      }
+                  },
+                  "attributes": null
+              }
+          ],
+          "resources": [
+              {
+                  "name": "cam_error",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "cam_error",
+                          "property": "value",
+                          "parameter": "cameradevice_error",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "tags",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "tags",
+                          "property": "value",
+                          "parameter": "cameradevice_tags",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              },
+              {
+                  "name": "onvif_profiles",
+                  "get": [
+                      {
+                          "index": null,
+                          "operation": "get",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ],
+                  "set": [
+                      {
+                          "index": null,
+                          "operation": "set",
+                          "object": "onvif_profiles",
+                          "property": "value",
+                          "parameter": "onvif_camera_metadata",
+                          "resource": null,
+                          "secondary": [],
+                          "mappings": {}
+                      }
+                  ]
+              }
+          ],
+          "commands": [
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a0",
+                  "name": "tags",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get Tags",
+                              "expectedValues": [
+                                  "cameradevice_tags"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/tags",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set Tags",
+                              "expectedValues": [
+                                  "cameradevice_id"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set Tags Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "cameradevice_tags"
+                      ]
+                  }
+              },
+              {
+                  "created": 1548827534765,
+                  "modified": 0,
+                  "origin": 0,
+                  "id": "5c513b8e9f8fc20001a711a1",
+                  "name": "onvif_profiles",
+                  "get": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Get ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Get ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ]
+                  },
+                  "put": {
+                      "path": "/api/v1/device/{deviceId}/onvif_profiles",
+                      "responses": [
+                          {
+                              "code": "200",
+                              "description": "Set ONVIF Profiles",
+                              "expectedValues": [
+                                  "onvif_camera_metadata"
+                              ]
+                          },
+                          {
+                              "code": "503",
+                              "description": "Set ONVIF Profiles Error",
+                              "expectedValues": [
+                                  "cameradevice_error"
+                              ]
+                          }
+                      ],
+                      "parameterNames": [
+                          "onvif_camera_metadata"
+                      ]
+                  }
+              }
+          ]
+      }
+  }
+ ]
+## ONVIF Metadata Cache Examples
+xample response from results that you can expect to find populates the locally cached **ONVIF etadata** ./res/camerainfo.json
+his serves as an in-memory and persisted repository to concurrently provide responses to ommands such as **GET /api/v1/device/{deviceId}/onvif_profiles**
+ [{
+ 	"ip": "10.43.18.149:80",
+ 	"productname": "HIKVISION",
+ 	"firmwareversion": "V5.4.1 build 160525",
+ 	"serialnumber": "DS-2CD2342WD-I20160817BBWR634390011",
+ 	"profiles": [{
+ 		"ProfileName": "mainStream",
+ 		"Formats": "H264",
+ 		"Resolutions": ["1280", "720"],
+ 		"RTSPPath": "rtsp://10.43.18.149:554/Streaming/Channels/101?ransportmode=unicast\u0026profile=Profile_1",
+ 		"ImagePath": "http://10.43.18.149/onvif-http/snapshot?Profile_1",
+ 		"ProfileToken": "Profile_1"
+ 	}, {
+ 		"ProfileName": "subStream",
+ 		"Formats": "H264",
+ 		"Resolutions": ["640", "360"],
+ 		"RTSPPath": "rtsp://10.43.18.149:554/Streaming/Channels/102?ransportmode=unicast\u0026profile=Profile_2",
+ 		"ImagePath": "http://10.43.18.149/onvif-http/snapshot?Profile_2",
+ 		"ProfileToken": "Profile_2"
+ 	}],
+ 	"tags": {
+ 		"friendly_name": "White HikVision",
+ 		"location": "Wall3",
+ 		"newtag": "sometag4",
+ 		"store": true
+ 	}
+ }, {
+ 	"ip": "10.43.18.170:80",
+ 	"productname": "AXIS",
+ 	"firmwareversion": "7.15.2.1",
+ 	"serialnumber": "ACCC8E8621BB",
+ 	"profiles": [{
+ 		"ProfileName": "profile_0 h264",
+ 		"Formats": "H264",
+ 		"Resolutions": ["1920", "1920"],
+ 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?rofile=profile_0_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?esolution=1920x1920\u0026compression=30",
+ 		"ProfileToken": "profile_0_h264"
+ 	}, {
+ 		"ProfileName": "profile_1 h264",
+ 		"Formats": "H264",
+ 		"Resolutions": ["1920", "1920"],
+ 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?rofile=profile_1_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?esolution=1920x1920\u0026compression=30\u0026camera=2",
+ 		"ProfileToken": "profile_1_h264"
+ 	}, {
+ 		"ProfileName": "profile_0 jpeg",
+ 		"Formats": "JPEG",
+ 		"Resolutions": ["1920", "1920"],
+ 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?rofile=profile_0_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?esolution=1920x1920\u0026compression=30",
+ 		"ProfileToken": "profile_0_jpeg"
+ 	}, {
+ 		"ProfileName": "profile_1 jpeg",
+ 		"Formats": "JPEG",
+ 		"Resolutions": ["1920", "1920"],
+ 		"RTSPPath": "rtsp://10.43.18.170/onvif-media/media.amp?rofile=profile_1_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.170/onvif-cgi/jpg/image.cgi?esolution=1920x1920\u0026compression=30\u0026camera=2",
+ 		"ProfileToken": "profile_1_jpeg"
+ 	}],
+ 	"tags": {
+ 		"friendly_name": "Black Axis3",
+ 		"location": "Ceiling",
+ 		"newtag": "sometag3",
+ 		"store": false
+ 	}
+ }, {
+ 	"ip": "10.43.18.158:80",
+ 	"productname": "AXIS",
+ 	"firmwareversion": "6.15.6",
+ 	"serialnumber": "ACCC8E8439F0",
+ 	"profiles": [{
+ 		"ProfileName": "profile_1 h264",
+ 		"Formats": "H264",
+ 		"Resolutions": ["1920", "1080"],
+ 		"RTSPPath": "rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_h264\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\u0026compression=30",
+ 		"ProfileToken": "profile_1_h264"
+ 	}, {
+ 		"ProfileName": "profile_1 jpeg",
+ 		"Formats": "JPEG",
+ 		"Resolutions": ["1920", "1080"],
+ 		"RTSPPath": "rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_jpeg\u0026sessiontimeout=60\u0026streamtype=unicast",
+ 		"ImagePath": "http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\u0026compression=30",
+ 		"ProfileToken": "profile_1_jpeg"
+ 	}],
+ 	"tags": {
+ 		"friendly_name": "Black Axis",
+ 		"location": "North Wall",
+ 		"newtag": "sometag",
+ 		"store": true
+ 	}
+ }, ... ]
 
 ### **Axis Metadata Cache - Example**
 
