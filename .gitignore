@@ -9,3 +9,5 @@
 LintOutput.json
 device-camera-go
 run
+go.sum
+debug

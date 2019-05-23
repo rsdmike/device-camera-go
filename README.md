@@ -31,19 +31,9 @@ Perform the following steps to set up your development system. These are necessa
 
 Further detailed information is available on [EdgeX-Go repository](https://github.com/edgexfoundry/edgex-go/blob/master/docs/getting-started/Ch-GettingStartedGoDevelopers.rst).
 
-1. Install **Go 1.10** and Glide (package manager) using instructions found here:
-
-   - https://github.com/golang/go/wiki/Ubuntu
-
-   - NOTE: If upgrading from an earlier version of Go, it is best to first remove it; ref: https://golang.org/doc/install
-
-   - Install **dep** with:
-
-     ```
-     $ curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-     ```
-
-2. Install **Docker**.
+1. Install **Go 1.10**
+2. EdgeX (v. 1.0.0 - Edinburgh)
+3. (optional) Install **Docker**.
 
    - If upgrading from an earlier version of Docker, BKM is to first remove it using:
 
@@ -52,54 +42,6 @@ Further detailed information is available on [EdgeX-Go repository](https://githu
      ```
 
    - Follow instructions from [Install Docker using repository](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository)
-
-3. Install **Dep**.
-   ```
-   $ curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-   ```
-
-4. (optional) Install an **IDE** as appropriate. **[JetBrains Go Land](https://www.jetbrains.com/go/)** is a popular choice, alternate options below.
-
-   ```
-   $ tar -xzf goland-2018.2.1.tar.gz
-   $ ./bin/goland.sh
-   ```
-
-   - Alternate: [Visual Studio](https://code.visualstudio.com/)
-   - Alternate: [Sublime Text](https://www.alexedwards.net/blog/streamline-your-sublime-text-and-go-workflow)
-   - ...
-
-# Preparing EdgeX Stack
-
-1. The easiest way to launch and explore device-camera-go using existing EdgeX services is to clone the edgexfoundry/developer-scripts repository and run the published Docker containers for the **EdgeX Delhi 0.7.1 release**.
-
-   ```
-   $ cd ~/dev
-   $ git clone https://github.com/edgexfoundry/developer-scripts.git
-   $ cd ~/dev/developer-scripts/compose-files
-   ```
-
-   At time of writing, you will see that the latest docker-compose.yml is equivalent to Delhi 0.7.1.
-
-2. The device-camera-go device service does not require other EdgeX device services. To reduce runtime footprint a bit, and possible confusion about new devices, comment out the device-virtual section (using # at beginning of the line) in **./compose-files/docker-compose.yml**. 
-
-   ```
-   # device-virtual:
-   #   image: edgexfoundry/docker-device-virtual:0.6.0
-   #   ports:device-virtual:
-   ...
-   ```
-
-3. If you are already running MongoDB on its default port (27017), you will want to also update **./compose-files/docker-compose.yml** to assign a unique port for EdgeX MongoDB (e.g., 27018 as the port referenced by your local system):
-
-   ```
-   mongo:
-     ...
-     ports:
-      - "27018:27017"
-   ```
-
-4. The first time launching EdgeX, Docker will automatically **pull the EdgeX images** to your system. This requires an Internet connection and allowance through proxies/firewall. Detailed information about pulling EdgeX containers is available here: https://docs.edgexfoundry.org/Ch-GettingStartedUsersNexus.html
 
 # Preparing Device-SDK-Go
 
@@ -110,32 +52,9 @@ Further detailed information is available on [EdgeX-Go repository](https://githu
    git clone https://github.com/edgexfoundry-holding/device-camera-go.git
    ```
 
-   Note: You may alternately clone to a separate project folder so long as you create a symlink to it from $GOPATH/src/github.com/edgexfoundry-holding folder.
-
-2. In GoLand, load device-camera-go project, execute the following within View/Tools/Terminal:
-
+2. Run the following
    ```
-   $ make prepare
    $ make build
-   ```
-
-   Alternately, invoke these same commands in a terminal from the root folder of the project. For subsequent builds, invoke **make update**
-
-   NOTE: make prepare will error if the manifest and lock files already exist (named Gopkg.toml and Gopkg.lock respectively). In this case run **make update** instead.
-
-3. (Pending) Note that device-camera-go will not build due without device-sdk-go incorporating a dependent code change. This is captured in a (currently) [pending pull request](https://github.com/edgexfoundry/device-sdk-go/pull/163) to add one method to device-camera-go/vendor/github.com/edgexfoundry/device-sdk-go/manageddevices.go:
-
-   ```
-   // GetDeviceByName returns device if it exists in EdgeX registration cache.
-   func (s *Service) GetDeviceByName(name string) (models.Device, error) {
-      device, ok := cache.Devices().ForName(name)
-      if !ok {
-         msg := fmt.Sprintf("Device %s cannot be found in cache", name)
-         common.LoggingClient.Info(msg)
-         return models.Device{}, fmt.Errorf(msg)
-      }
-      return device, nil
-   }
    ```
 
 # Running device-camera-go
@@ -149,20 +68,6 @@ Ready-set-go!
    $ docker-compose up -d
    ```
 
-2. **Confirm EdgeX services** are running properly by navigating to the Consul dashboard in your browser:
-
-   - http://127.0.0.1:8500/ui/#/dc1/services
-
-     [image of green/passing services]
-
-3. **Modify your /etc/hosts file** to override DNS resolution to resolve EdgeX service URLs. Add a single line below your existing localhost entry: 
-
-   > 127.0.0.1	localhost
-   > 127.0.0.1	edgex-core-command edgex-core-metadata edgex-core-data
-   >
-   > ...
-
-   Alternately, adjust EdgeX service URLs used in this guide and the tests/postman import file so they point to  "127.0.0.1", "localhost".
 
 4. **Modify the ./run.sh script** with appropriate options (described below) and then launch the device-camera-go service.
    NOTE: Be sure to update the parameters you supply to device-camera-go with expected sources and IP address ranges according to your network topology and IP camera deployment and configuration:
@@ -201,7 +106,6 @@ $ go run main.go -registry -source onvif -source axis
 
 | Makefile Command | Action Performed                                             |
 | ---------------- | ------------------------------------------------------------ |
-| make prepare     | Initializes the project manifest and dependencies            |
 | make update      | Updates components                                           |
 | make build       | Builds camera-device-go binary                               |
 | make run         | Converts run.sh content into ./run launcher                  |
@@ -230,12 +134,14 @@ The ./res/configuration.toml will dynamically define and register devices based 
 
 An example of values to populate camera tags is found in the ./res folder. Note that the keys are simply the device serial number. So when the associated device is discovered using both ONVIF and Axis, you will find a separate device name registered with EdgeX for each device profile (uniquely named per a name prefix).
 
-> {
-> "ACCC8E8439F0":{"friendly_name":"Black Axis","location":"North Wall","newtag":"sometag","store":true},
-> "ACCC8E843A18":{"friendly_name":"Black Axis2","location":"North Wall2","newtag":"sometag2","store":true},
-> "ACCC8E8621BB":{"friendly_name":"Black Axis3","location":"Ceiling","newtag":"sometag3","store":false},
-> "DS-2CD2342WD-I20160817BBWR634390011":{"friendly_name":"White HikVision","location":"Wall3","newtag":"sometag4","store":true}
-> }
+```json
+ {
+ "ACCC8E8439F0":{"friendly_name":"Black Axis","location":"North Wall","newtag":"sometag","store":true},
+ "ACCC8E843A18":{"friendly_name":"Black Axis2","location":"North Wall2","newtag":"sometag2","store":true},
+ "ACCC8E8621BB":{"friendly_name":"Black Axis3","location":"Ceiling","newtag":"sometag3","store":false},
+ "DS-2CD2342WD-I20160817BBWR634390011":{"friendly_name":"White HikVision","location":"Wall3","newtag":"sometag4","store":true}
+ }
+ ```
 
 ## Commands
 
@@ -245,169 +151,172 @@ http://edgex-core-command:48082/api/v1/device/name/edgex-camera-onvif-ACCC8E8439
 
 This reveals the commands that were registered for this camera; e.g., **tags** and **onvif_profiles**.
 
-> {
->  "id": "5c513b9a9f8fc20001a711aa",
->  "name": "edgex-camera-onvif-ACCC8E8439F0",
->  "adminState": "UNLOCKED",
->  "operatingState": "ENABLED",
->  "lastConnected": 0,
->  "lastReported": 0,
->  "labels": [
->      "newtag:sometag",
->      "store:true",
->      "friendly_name:Black Axis",
->      "location:North Wall"
->  ],
->  "location": null,
->  "commands": [
->      {
->          "created": 1548827534765,
->          "modified": 0,
->          "origin": 0,
->          "id": "5c513b8e9f8fc20001a711a0",
->          "name": "tags",
->          "get": {
->              "path": "/api/v1/device/{deviceId}/tags",
->              "responses": [
->                  {
->                      "code": "200",
->                      "description": "Get Tags",
->                      "expectedValues": [
->                          "cameradevice_tags"
->                      ]
->                  },
->                  {
->                      "code": "503",
->                      "description": "Get Tags Error",
->                      "expectedValues": [
->                          "cameradevice_error"
->                      ]
->                  }
->              ],
->              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/command/5c513b8e9f8fc20001a711a0"
->          },
->          "put": {
->              "path": "/api/v1/device/{deviceId}/tags",
->              "responses": [
->                  {
->                      "code": "200",
->                      "description": "Set Tags",
->                      "expectedValues": [
->                          "cameradevice_id"
->                      ]
->                  },
->                  {
->                      "code": "503",
->                      "description": "Set Tags Error",
->                      "expectedValues": [
->                          "cameradevice_error"
->                      ]
->                  }
->              ],
->              "parameterNames": [
->                  "cameradevice_tags"
->              ],
->              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/command/5c513b8e9f8fc20001a711a0"
->          }
->      },
->      {
->          "created": 1548827534765,
->          "modified": 0,
->          "origin": 0,
->          "id": "5c513b8e9f8fc20001a711a1",
->          "name": "onvif_profiles",
->          "get": {
->              "path": "/api/v1/device/{deviceId}/onvif_profiles",
->              "responses": [
->                  {
->                      "code": "200",
->                      "description": "Get ONVIF Profiles",
->                      "expectedValues": [
->                          "onvif_camera_metadata"
->                      ]
->                  },
->                  {
->                      "code": "503",
->                      "description": "Get ONVIF Profiles Error",
->                      "expectedValues": [
->                          "cameradevice_error"
->                      ]
->                  }
->              ],
->              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/command/5c513b8e9f8fc20001a711a1"
->          },
->          "put": {
->              "path": "/api/v1/device/{deviceId}/onvif_profiles",
->              "responses": [
->                  {
->                      "code": "200",
->                      "description": "Set ONVIF Profiles",
->                      "expectedValues": [
->                          "onvif_camera_metadata"
->                      ]
->                  },
->                  {
->                      "code": "503",
->                      "description": "Set ONVIF Profiles Error",
->                      "expectedValues": [
->                          "cameradevice_error"
->                      ]
->                  }
->              ],
->              "parameterNames": [
->                  "onvif_camera_metadata"
->              ],
->              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/command/5c513b8e9f8fc20001a711a1"
->          }
->      }
->  ]
-> }
-
+```json
+ {
+  "id": "5c513b9a9f8fc20001a711aa",
+  "name": "edgex-camera-onvif-ACCC8E8439F0",
+  "adminState": "UNLOCKED",
+  "operatingState": "ENABLED",
+  "lastConnected": 0,
+  "lastReported": 0,
+  "labels": [
+      "newtag:sometag",
+      "store:true",
+      "friendly_name:Black Axis",
+      "location:North Wall"
+  ],
+  "location": null,
+  "commands": [
+      {
+          "created": 1548827534765,
+          "modified": 0,
+          "origin": 0,
+          "id": "5c513b8e9f8fc20001a711a0",
+          "name": "tags",
+          "get": {
+              "path": "/api/v1/device/{deviceId}/tags",
+              "responses": [
+                  {
+                      "code": "200",
+                      "description": "Get Tags",
+                      "expectedValues": [
+                          "cameradevice_tags"
+                      ]
+                  },
+                  {
+                      "code": "503",
+                      "description": "Get Tags Error",
+                      "expectedValues": [
+                          "cameradevice_error"
+                      ]
+                  }
+              ],
+              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/ommand/5c513b8e9f8fc20001a711a0"
+          },
+          "put": {
+              "path": "/api/v1/device/{deviceId}/tags",
+              "responses": [
+                  {
+                      "code": "200",
+                      "description": "Set Tags",
+                      "expectedValues": [
+                          "cameradevice_id"
+                      ]
+                  },
+                  {
+                      "code": "503",
+                      "description": "Set Tags Error",
+                      "expectedValues": [
+                          "cameradevice_error"
+                      ]
+                  }
+              ],
+              "parameterNames": [
+                  "cameradevice_tags"
+              ],
+              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/ommand/5c513b8e9f8fc20001a711a0"
+          }
+      },
+      {
+          "created": 1548827534765,
+          "modified": 0,
+          "origin": 0,
+          "id": "5c513b8e9f8fc20001a711a1",
+          "name": "onvif_profiles",
+          "get": {
+              "path": "/api/v1/device/{deviceId}/onvif_profiles",
+              "responses": [
+                  {
+                      "code": "200",
+                      "description": "Get ONVIF Profiles",
+                      "expectedValues": [
+                          "onvif_camera_metadata"
+                      ]
+                  },
+                  {
+                      "code": "503",
+                      "description": "Get ONVIF Profiles Error",
+                      "expectedValues": [
+                          "cameradevice_error"
+                      ]
+                  }
+              ],
+              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/ommand/5c513b8e9f8fc20001a711a1"
+          },
+          "put": {
+              "path": "/api/v1/device/{deviceId}/onvif_profiles",
+              "responses": [
+                  {
+                      "code": "200",
+                      "description": "Set ONVIF Profiles",
+                      "expectedValues": [
+                          "onvif_camera_metadata"
+                      ]
+                  },
+                  {
+                      "code": "503",
+                      "description": "Set ONVIF Profiles Error",
+                      "expectedValues": [
+                          "cameradevice_error"
+                      ]
+                  }
+              ],
+              "parameterNames": [
+                  "onvif_camera_metadata"
+              ],
+              "url": "http://edgex-core-command:48082/api/v1/device/5c513b9a9f8fc20001a711aa/ommand/5c513b8e9f8fc20001a711a1"
+          }
+      }
+  ]
+ }
+```
 Note that commands are initiated through the EdgeX Command Service through the described "url" properties that use derived values (e.g., the unique device id and command id values) which are constructed by EdgeX at runtime.
 
 ### Tags Command
 
 Invoking a **tags** command on our ONVIF camera device with serial number ACCC8E8439F0 responds as follows. Note that commands are initiated through the EdgeX Command Service with derived values at runtime.
 
-> {
->  "id": "",
->  "pushed": 0,
->  "device": "edgex-camera-onvif-ACCC8E8439F0",
->  "created": 0,
->  "modified": 0,
->  "origin": 1548867163784,
->  "schedule": null,
->  "event": null,
->  "readings": [
->      {
->          "id": "",
->          "pushed": 0,
->          "created": 0,
->          "origin": 1548867163784,
->          "modified": 0,
->          "device": "edgex-camera-onvif-ACCC8E8439F0",
->          "name": "cameradevice_tags",
->          "value": "'friendly_name':'Black Axis','location':'North Wall','newtag':'sometag','store':true"
->      }
->  ]
-> }
-
+```json
+ {
+  "id": "",
+  "pushed": 0,
+  "device": "edgex-camera-onvif-ACCC8E8439F0",
+  "created": 0,
+  "modified": 0,
+  "origin": 1548867163784,
+  "schedule": null,
+  "event": null,
+  "readings": [
+      {
+          "id": "",
+          "pushed": 0,
+          "created": 0,
+          "origin": 1548867163784,
+          "modified": 0,
+          "device": "edgex-camera-onvif-ACCC8E8439F0",
+          "name": "cameradevice_tags",
+          "value": "'friendly_name':'Black Axis','location':'North Wall','newtag':'sometag',store':true"
+      }
+  ]
+ }
+```
 ### ONVIF Profiles Command
 
 Invoking the **onvif_profiles** command will return device readings with a value that holds camera connectivity information similar to the following:
 
-> {
-> 	"id": "",
-> 	"device": "edgex-camera-onvif-ACCC8E8439F0",
-> 	"origin": 1548868440409,  ...
-> 	"readings": [{
-> 		"origin": 1548868440409,
-> 		"device": "edgex-camera-onvif-ACCC8E8439F0",
-> 		"name": "onvif_camera_metadata",
-> 		"value": "{\"ip\":\"10.43.18.158:80\",\"productname\":\"AXIS\",\"firmwareversion\":\"6.15.6\",\"serialnumber\":\"ACCC8E8439F0\",\"profiles\":[{\"ProfileName\":\"profile_1 h264\",\"Formats\":\"H264\",\"Resolutions\":[\"1920\",\"1080\"],\"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?profile=profile_1_h264\\u0026sessiontimeout=60\\u0026streamtype=unicast\",\"ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?resolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_h264\"},{\"ProfileName\":\"profile_1 jpeg\",\"Formats\":\"JPEG\",\"Resolutions\":[\"1920\",\"1080\"],\"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?profile=profile_1_jpeg\\u0026sessiontimeout=60\\u0026streamtype=unicast\",\"ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?resolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_jpeg\"}],\"tags\":{\"friendly_name\":\"Black Axis\",\"location\":\"North Wall\",\"newtag\":\"sometag\",\"store\":true}}"
-> 	}]
-> }
-
+```json
+ {
+ 	"id": "",
+ 	"device": "edgex-camera-onvif-ACCC8E8439F0",
+ 	"origin": 1548868440409,  ...
+ 	"readings": [{
+ 		"origin": 1548868440409,
+ 		"device": "edgex-camera-onvif-ACCC8E8439F0",
+ 		"name": "onvif_camera_metadata",
+ 		"value": "{\"ip\":\"10.43.18.158:80\",\"productname\":\"AXIS\","firmwareversion\":\"6.15.6\",\"serialnumber\":\"ACCC8E8439F0\",\"profiles\":[\"ProfileName\":\"profile_1 h264\",\"Formats\":\"H264\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_h264\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_h264\"},\"ProfileName\":\"profile_1 jpeg\",\"Formats\":\"JPEG\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_jpeg\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_jpeg\"}],\"tags\":\"friendly_name\":\"Black Axis\",\"location\":\"North Wall\",\"newtag\":\"sometag\","store\":true}}"
+ 	}]
+ }
+```
 ## Device Data Models
 
 ### **ONVIF Device Data Model**
@@ -420,7 +329,7 @@ This will produce a set of known devices, whether produced at startup by modifyi
 These responses reveal names, associated device profile, commands and other metadata associated with the device.
 
 Example Response:
-
+```json
 > [
 >  {
 >      "created": 1548827546764,
@@ -2101,7 +2010,7 @@ Note that the data model response for **Axis camera metadata** provides similar 
 		"store": true
 	}
 }]
-
+```
 
 
 ## Known Issues and Improvement Opportunities

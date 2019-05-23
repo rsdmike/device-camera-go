@@ -27,8 +27,5 @@ lint: $(GOMETALINTER)
 clean:
 	rm -f $(MICROSERVICES)
 
-prepare:
-	$(GO) mod init
-
 update:
 	$(GO) mod tidy
