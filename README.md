@@ -52,7 +52,7 @@ Further detailed information is available on [EdgeX-Go repository](https://githu
    git clone https://github.com/edgexfoundry-holding/device-camera-go.git
    ```
 
-2. Run the following
+2. Run the following:
    ```
    $ make build
    ```
@@ -92,7 +92,7 @@ Device-Camera-Go accepts the following runtime parameters.
 | -interval          | 60                         | Frequency of scans to schedule. Units are in seconds. The lower the number the more responsive, but greater network overhead and system I/O required. At a minimum, the value must be 10 seconds longer than the configured scan duration but for practical purposes should be set to much larger values to allow IP groups to scan (highly relative to # IP and # ports being scanned). |
 | -source  ...       | (see description)          | Source to scan. Provides a way to segment whether ONVIF and/or Axis cameras should be discovered. When no colon/port is provided, default port is 554 for Axis and 80 for ONVIF.<br />Examples:<br />-source axis<br />-source onvif<br />-source axis -source onvif<br />-source axis:554 -source onvif:80<br />-source axis:554,557,558 -source onvif:80,8000,8020 |
 | -tagsFile          | ./res/tags.json            | Path to file containing camera tags. These are used on startup and will reflect any changes occurring by invoking /tags command. |
-| -cameracredentials | ./res/cam-credentials.conf | Location and name of the file where camera access credentials Path to file containing credentials for ONVIF cameras. This holds a user and password, tab-separated that is configured on the camera for purpose of being accessed by the device-camera-go service. |
+| -cameracredentials | ./res/cam-credentials.conf | Location and name of the file where camera access credentials Path to file containing credentials for ONVIF cameras. This holds a user and password, tab-separated that is configured on the camera for purpose of being accessed by the device-camera-go service. See file in `./res` directory. |
 
 ```
 docker run --name device-camera-go -it --network host --rm hub.docker.com/device-camera-go:v0.1.0 <parameters>
@@ -308,12 +308,12 @@ Invoking the **onvif_profiles** command will return device readings with a value
  {
  	"id": "",
  	"device": "edgex-camera-onvif-ACCC8E8439F0",
- 	"origin": 1548868440409,  ...
+ 	"origin": 1548868440409,  
  	"readings": [{
  		"origin": 1548868440409,
  		"device": "edgex-camera-onvif-ACCC8E8439F0",
  		"name": "onvif_camera_metadata",
- 		"value": "{\"ip\":\"10.43.18.158:80\",\"productname\":\"AXIS\","firmwareversion\":\"6.15.6\",\"serialnumber\":\"ACCC8E8439F0\",\"profiles\":[\"ProfileName\":\"profile_1 h264\",\"Formats\":\"H264\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_h264\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_h264\"},\"ProfileName\":\"profile_1 jpeg\",\"Formats\":\"JPEG\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_jpeg\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_jpeg\"}],\"tags\":\"friendly_name\":\"Black Axis\",\"location\":\"North Wall\",\"newtag\":\"sometag\","store\":true}}"
+ 		"value": "{\"ip\":\"10.43.18.158:80\",\"productname\":\"AXIS\",\"firmwareversion\":\"6.15.6\",\"serialnumber\":\"ACCC8E8439F0\",\"profiles\":[\"ProfileName\":\"profile_1 h264\",\"Formats\":\"H264\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_h264\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_h264\"},\"ProfileName\":\"profile_1 jpeg\",\"Formats\":\"JPEG\",\"Resolutions\":[\"1920\",\"1080\"],"RTSPPath\":\"rtsp://10.43.18.158/onvif-media/media.amp?rofile=profile_1_jpeg\\u0026sessiontimeout=60\\u0026streamtype=unicast\","ImagePath\":\"http://10.43.18.158/onvif-cgi/jpg/image.cgi?esolution=1920x1080\\u0026compression=30\",\"ProfileToken\":\"profile_1_jpeg\"}],\"tags\":\"friendly_name\":\"Black Axis\",\"location\":\"North Wall\",\"newtag\":\"sometag\","store\":true}}"
  	}]
  }
 ```
