@@ -28,5 +28,5 @@ EXPOSE $APP_PORT
 
 COPY --from=builder . /
 
-ENTRYPOINT ["/device-camera-go","-registry","-source onvif","-source axis"]
+ENTRYPOINT ["/device-camera-go","-source onvif","-source axis"]
 

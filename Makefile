@@ -12,13 +12,13 @@ MICROSERVICES=./device-camera-go
 .PHONY: $(MICROSERVICES)
 
 build: $(MICROSERVICES)
-	go build
+	$(GO) build
 
 test: lint
-	go test ./... -cover
+	$(GO) test ./... -cover
 
 $(GOMETALINTER):
-	go get -u github.com/alecthomas/gometalinter
+	$(GO) get -u github.com/alecthomas/gometalinter
 	gometalinter --install &> /dev/null
 
 lint: $(GOMETALINTER)
@@ -28,7 +28,7 @@ clean:
 	rm -f $(MICROSERVICES)
 
 prepare:
-	go mod init
+	$(GO) mod init
 
 update:
-	go mod tidy
+	$(GO) mod tidy
