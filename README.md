@@ -25,58 +25,29 @@ Additional details and answers related to EdgeX itself are available on:
 
 - [EdgeX Wiki](https://docs.edgexfoundry.org/Ch-GettingStartedUsers.html)
 
-# Prerequisites - Developer Setup
-
-Perform the following steps to set up your development system. These are necessary to build and extend the device-camera-go component.
-
-Further detailed information is available on [EdgeX-Go repository](https://github.com/edgexfoundry/edgex-go/blob/master/docs/getting-started/Ch-GettingStartedGoDevelopers.rst).
-
-1. Install **Go 1.10**
-2. EdgeX (v. 1.0.0 - Edinburgh)
-3. (optional) Install **Docker**.
-
-   - If upgrading from an earlier version of Docker, BKM is to first remove it using:
-
-     ```
-     $ sudo apt-get remove docker docker-engine docker.io
-     ```
-
-   - Follow instructions from [Install Docker using repository](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository)
-
 # Preparing Device-SDK-Go
 
-1. Get latest device-camera-go source code:
+1. Start EdgeX Mongo
 
-   ```
-   cd $GOPATH/src/github.com/edgexfoundry-holding
-   git clone https://github.com/edgexfoundry-holding/device-camera-go.git
-   ```
+   - [ ] Clone **[developer-scripts](https://github.com/edgexfoundry/developer-scripts)** repo
+   - [ ] cd **compose-files** folder
+   - [ ] Run "**docker-compose up mongo**"
+     - This uses the default compose file to start the EdgeX Mongo service which exposes it's port to apps running on localhost
 
-2. Run the following:
-   ```
-   $ make build
-   ```
+2. Run EdgeX cores services
 
-# Running device-camera-go
+   - [ ] Clone **[edgex-go](https://github.com/edgexfoundry/edgex-go)** repo
+   - [ ] run "**make build**"
+   - [ ] run "**make run**"
+     - This starts all the required EdgeX services 
 
-Ready-set-go!
+3. Run **simple-cbor-filter** example
 
-1. **Launch the EdgeX stack** by instructing Docker to use developer-scripts/compose-files/docker-compose.yml to run the services in detached state. This way control will return to your terminal window. Of course you can leave off the -d parameter and open additional terminals if you prefer watching EdgeX-specific logging activities in real time.
-
-   ```
-   $ cd ~/dev/developer-scripts/compose-files
-   $ docker-compose up -d
-   ```
-
-
-4. **Modify the ./run.sh script** with appropriate options (described below) and then launch the device-camera-go service.
-   NOTE: Be sure to update the parameters you supply to device-camera-go with expected sources and IP address ranges according to your network topology and IP camera deployment and configuration:
-
-   ```
-   $ cd $GOPATH/src/github.com/edgexfoundry-holding/device-camera-go
-   $ make run
-   $ ./run
-   ```
+   - [ ] Clone **[device-camera-go](https://github.com/edgexfoundry-holding/device-camera-go.git)** repo
+   - [ ] run "**make build**"
+   - [ ] **Modify the ./run.sh script**  with appropriate options (described below) and then launch the device-camera-go service.
+   > Be sure to update the parameters you supply to device-camera-go with expected sources and IP address ranges according to your network topology and IP camera deployment and configuration:
+   - [ ] run `./run.sh`
 
 # Device-Camera-Go Configuration
 

@@ -1,5 +1,5 @@
 [Service]
-Host = "localhost"
+Host = "172.17.0.1"
 Port = 49990
 ConnectRetries = 3
 HealthCheck = "/api/v1/ping"
